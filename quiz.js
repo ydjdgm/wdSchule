@@ -61,6 +61,16 @@ function submitQuiz() {
             score++;
         }
     });
+    
+    let userAnswers = quizzes.map((quiz, index) => {
+        const selectedChoice = document.querySelector(`input[name="quiz${index}"]:checked`);
+        return {
+            question: quiz.question,
+            selectedAnswer: selectedChoice ? selectedChoice.value : null,
+            correctAnswer: quiz.answer
+        };
+    });
+    localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 
     // localStorage에 seconds 저장
     localStorage.setItem("seconds", seconds);
