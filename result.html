@@ -9,6 +9,7 @@
 <h2>퀴즈 결과</h2>
 
 <div id="result"></div>
+<div id="seconds"></div>
 
 <script>
 // URL에서 점수 추출
@@ -16,7 +17,9 @@ const params = new URLSearchParams(window.location.search);
 const score = params.get('score');
 // 로컬 스토리지에서 유저 이름 추출
 const userName = localStorage.getItem("userName");
+const seconds = localStorage.getItem("seconds");
 document.getElementById('result').innerHTML = `${userName}님의 점수는 ${score}/10입니다.`;
+document.getElementById('seconds').innerHTML = `걸린 시간: ${seconds}`;
 </script>
 </body>
 </html>
