@@ -23,15 +23,48 @@ const quizzes = [
     });
   }
   
-  function submitQuiz() {
-    quizzes.forEach((quiz, index) => {
-      const selectedChoice = document.querySelector(`input[name="quiz${index}"]:checked`);
-      if(selectedChoice && selectedChoice.value === quiz.answer) {
-        score++;
-      }
-    });
-    window.location.href = `result.html?score=${score}`;
-  }
-  
   showQuizzes();
   
+  let seconds = 0;
+let interval = null;
+
+function startTimer() {
+    interval = setInterval(function() {
+        seconds++;
+        document.getElementById('timer').textContent = formatTime(seconds);
+    }, 1000);
+}
+
+function formatTime(sec) {
+    const minutes = Math.floor(sec / 60);
+    const seconds = sec % 60;
+    return `${pad(minutes)}:${pad(seconds)}`;
+}
+
+function pad(value) {
+    return value.toString().padStart(2, '0');
+}
+
+// 타이머 시작
+startTimer();
+
+// 퀴즈 제출 함수에 타이머 중지 코드 추가
+function submitQuiz() {
+    // 타이머 중지
+    clearInterval(interval);
+
+    // 점수 계산
+    quizzes.forEach((quiz, index) => {
+        const selectedChoice = document.querySelector(`input[name="quiz${index}"]:checked`);
+        if(selectedChoice && selectedChoice.value === quiz.answer) {
+            score++;
+        }
+    });
+
+    // 결과 페이지로 리다이렉트
+    window.location.href = `result.html?score=${score}`;
+}
+
+// 나머지 코드는 그대로 유지합니다.
+
+
