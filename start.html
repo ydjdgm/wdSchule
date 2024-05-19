@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>퀴즈 시작 페이지</title>
+    <title>퀴즈 시작</title>
+    <script>
+        function startQuiz() {
+            var userName = document.getElementById('userName').value;
+            if (userName.trim() === "") {
+                alert("유저 이름을 입력해주세요.");
+            } else {
+                localStorage.setItem("userName", userName); // 유저 이름을 로컬 스토리지에 저장
+                window.location.href = "index.html"; // index.html로 이동
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>퀴즈 시작하기</h1>
-    <input type="text" id="userName" placeholder="이름을 입력하세요">
-    <button id="startQuiz">퀴즈 시작하기</button>
 
-    <script src="script.js"></script>
+<h2>퀴즈 시작하기</h2>
+
+<label for="userName">이름:</label>
+<input type="text" id="userName" name="userName">
+<button onclick="startQuiz()">퀴즈 시작</button>
+
 </body>
 </html>
