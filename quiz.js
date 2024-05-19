@@ -54,6 +54,7 @@ function submitQuiz() {
     clearInterval(interval);
 
     // 점수 계산
+    let score = 0; // 점수 초기화 (이 부분이 코드에 없었다면 추가 필요)
     quizzes.forEach((quiz, index) => {
         const selectedChoice = document.querySelector(`input[name="quiz${index}"]:checked`);
         if(selectedChoice && selectedChoice.value === quiz.answer) {
@@ -61,10 +62,12 @@ function submitQuiz() {
         }
     });
 
+    // localStorage에 seconds 저장
+    localStorage.setItem("seconds", seconds);
+
     // 결과 페이지로 리다이렉트
     window.location.href = `result.html?score=${score}`;
 }
 
+
 // 나머지 코드는 그대로 유지합니다.
-
-
