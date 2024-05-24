@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>퀴즈 시작</title>
+    <title>Start</title>
     <script>
         function startQuiz() {
             var userName = document.getElementById('userName').value;
             if (userName.trim() === "") {
-                alert("유저 이름을 입력해주세요.");
+                alert("Please wrtie your name.");
             } else {
                 localStorage.setItem("userName", userName); // 유저 이름을 로컬 스토리지에 저장
                 window.location.href = "index.html"; // index.html로 이동
@@ -17,11 +17,11 @@
 </head>
 <body>
 
-<h2>퀴즈 시작하기</h2>
+<h2>Start Quiz</h2>
 
-<label for="userName">이름:</label>
+<label for="userName">name:</label>
 <input type="text" id="userName" name="userName">
-<button onclick="startQuiz()">퀴즈 시작</button>
+<button onclick="startQuiz()">Start Quiz</button>
 
 </body>
 </html>
