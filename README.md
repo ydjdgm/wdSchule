@@ -8,12 +8,14 @@ timer
 
 review.html
 
+change language
+
 # what to do
 make quiz contents
 
-change language
+review.html contents
 
-review.html content
+timer function bug fix
 
 ppt for presentation
 
