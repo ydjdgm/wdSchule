@@ -1,6 +1,6 @@
 const quizzes = [
-    {question: "문제 1", choices: ["선택지 1", "선택지 2", "선택지 3", "선택지 4"], answer: "선택지 1"},
-    {question: "문제 2", choices: ["선택지 1", "선택지 2", "선택지 3", "선택지 4"], answer: "선택지 2"},
+    {question: "Example Quiz 1", choices: ["Example 1", "Example 2", "Example 3", "Example 4"], answer: "Example 1"},
+    {question: "Example Quiz 2", choices: ["Example 1", "Example 2", "Example 3", "Example 4"], answer: "Example 2"},
     // 나머지 퀴즈도 이와 같은 형식으로 추가
   ];
   
