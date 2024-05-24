@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>퀴즈 복습</title>
+<title>Review</title>
 </head>
 <body>
 
-<h2>퀴즈 복습</h2>
+<h2>Review Quizs</h2>
 
 <div id="reviewContent"></div>
 
@@ -17,9 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     userAnswers.forEach((answer, index) => {
         const div = document.createElement('div');
-        div.innerHTML = `<p>문제 ${index + 1}</p>
-                         <p>선택한 답: ${answer.selectedAnswer}</p>
-                         <p>정답: ${answer.correctAnswer}</p>`;
+        div.innerHTML = `<p>Quiz ${index + 1}</p>
+                         <p>Your answer: ${answer.selectedAnswer}</p>
+                         <p>answer: ${answer.correctAnswer}</p>`;
         reviewContent.appendChild(div);
     });
 });
