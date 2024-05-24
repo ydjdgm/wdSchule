@@ -1,20 +1,20 @@
 # wdSchule
-학교 웹디자인 과제
+WebDesign Project
 
-# 한 것
-기본 기능
+# finish
+basic features
 
-타이머
+timer
 
-리뷰 페이지
+review.html
 
-# 할 것
-문제 만들기
+# what to do
+make quiz contents
 
-영어로 언어 변경
+change language
 
-리뷰 페이지에 간단한 풀이 추가
+review.html content
 
-ppt준비
+ppt for presentation
 
-document준비
+bericht-document
