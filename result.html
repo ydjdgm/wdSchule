@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Result</title>
+<link rel="stylesheet" href="result.css">
 </head>
 <body>
 
@@ -20,8 +21,12 @@ const score = params.get('score');
 // 로컬 스토리지에서 유저 이름 추출
 const userName = localStorage.getItem("userName");
 const seconds = localStorage.getItem("seconds");
-document.getElementById('result').innerHTML = `${userName}´s score: ${score}/10.`;
-document.getElementById('seconds').innerHTML = `time: ${seconds}`;
+document.getElementById('result').innerHTML = `${userName}´s score: ${score}/5.`;
+
+const minutes = Math.floor(seconds / 60);//분 계산
+const reamainingSeconds = seconds % 60
+
+document.getElementById('seconds').innerHTML = `time: ${minutes}m ${reamainingSeconds}s`;
 </script>
 </body>
 </html>
