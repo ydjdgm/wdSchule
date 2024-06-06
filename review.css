@@ -1,0 +1,26 @@
+/* 기존 스타일 유지 */
+
+/* Review 페이지를 위한 추가 스타일 */
+#reviewContent div {
+    background-color: #f9f9f9;
+    border: 2px solid #4682B4; /* Steel Blue color */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  #reviewContent p {
+    color: #000000; /* Steel Blue color */
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  #reviewContent p:first-child {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  h2 {
+    color: #4682B4; /* 철갑청색 */
+  }
