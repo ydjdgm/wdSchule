@@ -2,27 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start</title>
-    <link rel="stylesheet" href="start.css">
-    <script>
-        function startQuiz() {
-            var userName = document.getElementById('userName').value;
-            if (userName.trim() === "") {
-                alert("Please wrtie your name.");
-            } else {
-                localStorage.setItem("userName", userName); // 유저 이름을 로컬 스토리지에 저장
-                window.location.href = "index.html"; // index.html로 이동
-            }
+    <style>
+        .modal{
+            position:absolute;
+            display:none;
+            
+            justify-content: center;
+            top:0;
+            left:0;
+
+            width:100%;
+            height:100%;
+
+            
+
+            background-color: rgba(0,0,0,0.4);
         }
-    </script>
+    </style>
 </head>
 <body>
+    <h2>Welcome!</h2>
 
-<h2>Welcome!</h2>
+    <label for="userName">name:</label>
+    <input type="text" id="userName" name="userName">
 
-<label for="userName">name:</label>
-<input type="text" id="userName" name="userName">
-<button onclick="startQuiz()">Start Quiz</button>
+    <button onclick="OpenModal();">Quiz Start!</button>
 
+    <div class="modal">
+        <div class="modal_body">
+            <h2>Select Thema!</h2>
+            <p>모달창 내용 </p>
+            <button onclick="GoToMath();">math</button>
+            <button onclick="GoToJS();">javascript</button>
+            <button onclick="CloseModal();">X</button>
+        </div>
+    </div>
+
+    <script>
+
+        var userName;
+
+        function CloseModal(){
+            const modal = document.querySelector('.modal')
+            modal.style.display = "none"
+        };
+
+        function OpenModal(){
+            userName = document.getElementById('userName').value;
+            if (userName.trim() === ""){
+                alert("Please wrtie your name.");
+            }else{
+                const modal = document.querySelector('.modal')
+                modal.style.display = "flex"
+            }
+        };
+
+        function GoToMath(){
+            localStorage.setItem("userName", userName)
+            window.location.href = 'index.html'
+        };
+        function GoToJS(){
+            localStorage.setItem("userName", userName)
+            window.location.href = 'jsq.html'
+        };
+        
+    </script>
 </body>
 </html>
