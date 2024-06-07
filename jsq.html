@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+ 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>modal test</title>
+  </head>
+ 
+  <body>
+ 
+
+<div id="quiz-container">
+    <div id="question"></div>
+    <ul id="choices"></ul>
+  </div>
+  
+
+    <script>
+        const quizzes = [
+  {question: "1:<br><br>1 + 1 = ?", choices: ["11", "2024", "2", "1"], answer: "2"},
+  {question: "2:<br><br>2x + 3 = 4<br> x = ?", choices: ["2/1", "1/2", "2", "4"], answer: "1/2"},
+  {question: "3:<br><br>Which number is a square?<br>2, 3, 5, 9, 17, □, 65", choices: ["44", "53", "23", "33"], answer: "33"},
+  {question: "4:<br><br>What day is it today?<br>I wish yesterday was tomorrow... Then today would be Friday...", choices: ["Saturday", "Sunday", "Monday", "Tuesday"], answer: "Sunday"},
+  {question: "5:<br><br>There is an airplane with 100 seats.<br>The nth passenger sits in the nth seat.<br>The first drunk passenger sits in a random seat.<br><br>Passengers numbered 2 through 100 are seated according to the following rules:<br>If a passenger's seat is empty, he sits in his own seat.<br>If the passenger's seat is not empty, the passenger sits in a random empty seat.<br><br>What is the probability that the 100th passenger will sit in the 100th seat?", choices: ["Cannot be calculated", "47,71319237266%", "50%", "40%"], answer: "50%"}
+];
+
+let currentQuiz = 0;
+
+function displayQuiz(index) {
+  const quiz = quizzes[index];
+  const questionElement = document.getElementById('question');
+  const choicesElement = document.getElementById('choices');
+
+  questionElement.innerHTML = quiz.question;
+  choicesElement.innerHTML = '';
+
+  quiz.choices.forEach(function(choice, i) {
+    const li = document.createElement('li');
+    li.innerHTML = `<button onclick="chooseAnswer('${choice}', ${index})">${choice}</button>`;
+    choicesElement.appendChild(li);
+  });
+}
+
+function chooseAnswer(choice, index) {
+  if (choice == quizzes[index].answer) {
+    currentQuiz += 1;
+    if (currentQuiz < quizzes.length) {
+      displayQuiz(currentQuiz);
+    } else {
+      document.getElementById('quiz-container').innerHTML = '<p>Congratulation!</p>';
+    }
+  }else{
+    alert("Wrong Answer!");
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  displayQuiz(currentQuiz);
+});
+
+    </script>
+ 
+  </body>
+</html>

@@ -33,9 +33,8 @@
     <div class="modal">
         <div class="modal_body">
             <h2>Select Thema!</h2>
-            <p>모달창 내용 </p>
             <button onclick="GoToMath();">math</button>
-            <button onclick="GoToJS();">javascript</button>
+            <button onclick="GoToJS();">Web Design</button>
             <button onclick="CloseModal();">X</button>
         </div>
     </div>
@@ -67,6 +66,12 @@
             localStorage.setItem("userName", userName)
             window.location.href = 'jsq.html'
         };
+
+        window.onclick = function(event) {
+  if (event.target.className == "modal") {
+      event.target.style.display = "none";
+  }
+};
         
     </script>
 </body>
