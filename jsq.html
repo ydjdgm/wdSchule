@@ -1,64 +1,115 @@
 <!DOCTYPE html>
- 
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>modal test</title>
-  </head>
- 
-  <body>
- 
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Quiz</title>
+  <style> body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  #quiz-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #question {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  #choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #choices li {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+  
+  #choices button {
+    display: block;
+    width: 400px;
+    height: 100px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #choices button:hover {
+    background-color: #0056b3;
+  }
 
-<div id="quiz-container">
+  </style>
+</head>
+<body>
+
+  <div id="quiz-container">
     <div id="question"></div>
     <ul id="choices"></ul>
   </div>
-  
 
-    <script>
-        const quizzes = [
-  {question: "1:<br><br>1 + 1 = ?", choices: ["11", "2024", "2", "1"], answer: "2"},
-  {question: "2:<br><br>2x + 3 = 4<br> x = ?", choices: ["2/1", "1/2", "2", "4"], answer: "1/2"},
-  {question: "3:<br><br>Which number is a square?<br>2, 3, 5, 9, 17, □, 65", choices: ["44", "53", "23", "33"], answer: "33"},
-  {question: "4:<br><br>What day is it today?<br>I wish yesterday was tomorrow... Then today would be Friday...", choices: ["Saturday", "Sunday", "Monday", "Tuesday"], answer: "Sunday"},
-  {question: "5:<br><br>There is an airplane with 100 seats.<br>The nth passenger sits in the nth seat.<br>The first drunk passenger sits in a random seat.<br><br>Passengers numbered 2 through 100 are seated according to the following rules:<br>If a passenger's seat is empty, he sits in his own seat.<br>If the passenger's seat is not empty, the passenger sits in a random empty seat.<br><br>What is the probability that the 100th passenger will sit in the 100th seat?", choices: ["Cannot be calculated", "47,71319237266%", "50%", "40%"], answer: "50%"}
-];
+  <script>
+    const quizzes = [
+      { question: "Which of the following files is not used in this quiz website?", choices: ["HTML", "CSS", "C++", "JavaScript"], answer: "C++" },
+      { question: "Which of the following statements about modal is not true?", choices: ["Modals are used to display content in a layer above the main content.", "Modals can be closed by clicking a close button or outside the modal.", "Modals are always part of the HTML document structure, even when hidden.", "Modals cannot be styled with CSS."], answer: "Modals cannot be styled with CSS." },
+      { question: "Which syntax is correct to move to another html page?", choices: ["window.location.href = 'example.html'", "userName = document.getElementById('example.html').value", "alert('example.html')", 'const minutes = Math.floor(sec / 60)'], answer: "window.location.href = 'example.html'" }
+    ];
 
-let currentQuiz = 0;
+    let currentQuiz = 0;
 
-function displayQuiz(index) {
-  const quiz = quizzes[index];
-  const questionElement = document.getElementById('question');
-  const choicesElement = document.getElementById('choices');
+    function displayQuiz(index) {
+      const quiz = quizzes[index];
+      const questionElement = document.getElementById('question');
+      const choicesElement = document.getElementById('choices');
 
-  questionElement.innerHTML = quiz.question;
-  choicesElement.innerHTML = '';
+      questionElement.innerHTML = quiz.question;
+      choicesElement.innerHTML = '';
 
-  quiz.choices.forEach(function(choice, i) {
-    const li = document.createElement('li');
-    li.innerHTML = `<button onclick="chooseAnswer('${choice}', ${index})">${choice}</button>`;
-    choicesElement.appendChild(li);
-  });
-}
-
-function chooseAnswer(choice, index) {
-  if (choice == quizzes[index].answer) {
-    currentQuiz += 1;
-    if (currentQuiz < quizzes.length) {
-      displayQuiz(currentQuiz);
-    } else {
-      document.getElementById('quiz-container').innerHTML = '<p>Congratulation!</p>';
+      quiz.choices.forEach(function (choice, i) {
+        const li = document.createElement('li');
+        // 따옴표를 이스케이프 처리
+        const safeChoice = choice.replace(/'/g, "\\'");
+        li.innerHTML = `<button onclick="chooseAnswer('${safeChoice}', ${index})">${choice}</button>`;
+        choicesElement.appendChild(li);
+      });
     }
-  }else{
-    alert("Wrong Answer!");
-  }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-  displayQuiz(currentQuiz);
-});
+    function chooseAnswer(choice, index) {
+      if (choice === quizzes[index].answer) {
+        currentQuiz += 1;
+        if (currentQuiz < quizzes.length) {
+          displayQuiz(currentQuiz);
+        } else {
+          document.getElementById('quiz-container').innerHTML = '<p>Congratulations!</p>';
+        }
+      } else {
+        alert("Wrong Answer!");
+      }
+    }
 
-    </script>
- 
-  </body>
+    document.addEventListener('DOMContentLoaded', function () {
+      displayQuiz(currentQuiz);
+    });
+  </script>
+
+</body>
 </html>
